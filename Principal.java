@@ -15,7 +15,7 @@ public class Principal {
 
         switch(resposta){
             case 1:
-                System.out.println("Vamos criar o contato!\n");
+                System.out.println("Vamos criar um novo contato!\n");
                 Contato.criarContato(agenda, entrada);
                 break;
             case 2:
@@ -23,10 +23,9 @@ public class Principal {
                 Contato.lerContatos(agenda);
                 break;
             case 3:
-                System.out.print("Atualizar.\n");
+                Contato.atualizarContato(agenda, entrada);
                 break;
             case 4:
-                System.out.print("Apagar.\n");
                 Contato.deletarContato(agenda, entrada);
                 break;
             case 5:
@@ -35,7 +34,7 @@ public class Principal {
                 return; 
                 
             default:
-                System.out.print("Inválido! ");
+                System.out.print("Inválido! Tente novamente! Digite um número entre 1 e 5\n");
                 break;
             }
         }
