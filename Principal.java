@@ -27,6 +27,7 @@ public class Principal {
                 break;
             case 4:
                 System.out.print("Apagar.\n");
+                Contato.deletarContato(agenda, entrada);
                 break;
             case 5:
                 System.out.print("Saindo...");

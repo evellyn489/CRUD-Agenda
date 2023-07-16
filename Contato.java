@@ -27,6 +27,10 @@ public class Contato {
         return String.format("Nome: %s, Telefone: %d, Idade: %d, Endereço: %s", nome, telefone, idade, endereco);
     }
 
+    public String getNome(){
+        return nome;
+    }
+
     public static void criarContato(ArrayList<Contato>agenda, Scanner entrada){
         System.out.print("Nome: ");
         String nome = entrada.nextLine();
@@ -54,4 +58,24 @@ public class Contato {
             System.out.println(contato.getContato());
         }
     }
+    public static void deletarContato(ArrayList<Contato>agenda, Scanner entrada){
+        System.out.print("Digite o contato que deseja remover: ");
+        String nome = entrada.nextLine();
+
+        int indiceRemover = -1;
+
+        for(int i = 0; i < agenda.size(); i ++){
+            Contato contato = agenda.get(i);
+            if (contato.getNome().equalsIgnoreCase(nome)){
+                indiceRemover = i;
+                break;
+            }
+        }
+        if (indiceRemover != -1){
+            agenda.remove(indiceRemover);
+            System.out.println("Contato excluído!");
+        }else{
+            System.out.println("Contato não encontrado na agenda! Tente novamente!");
+            }
+        }
 }
