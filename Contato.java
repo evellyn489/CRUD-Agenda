@@ -20,11 +20,6 @@ public class Contato {
         this.telefone = telefonePessoa;
         this.idade = idadePessoa;
         this.endereco = enderecoPessoa;
-
-    }
-
-    public String getContato(){
-        return String.format("Nome: %s, Telefone: %d, Idade: %d, Endereço: %s", nome, telefone, idade, endereco);
     }
 
     public String getNome(){
@@ -34,12 +29,15 @@ public class Contato {
     public int getTelefone(){
         return telefone;
     }
+
     public int getIdade(){
         return idade;
     }
+
     public String getEndereco(){
         return endereco;
     }
+
     public static void criarContato(ArrayList<Contato>agenda, Scanner entrada){
         System.out.print("Nome: ");
         String nome = entrada.nextLine();
@@ -59,12 +57,30 @@ public class Contato {
         agenda.add(contato);
          
         System.out.println("Contato criado e armazenado com sucesso!\n");
-        
     }
 
     public static void lerContatos(ArrayList<Contato> agenda){
-        for (Contato contato : agenda){
-            System.out.println(contato.getContato());
+        String[][] dados = new String[agenda.size() + 1][4];
+
+        dados[0] = new String[]{"Nome", "Telefone", "Idade", "Endereço"};
+
+        for (int i = 0; i < agenda.size(); i++){
+            Contato contato = agenda.get(i);
+            dados[i + 1] = new String[]{contato.getNome(), Integer.toString(contato.getTelefone()), Integer.toString(contato.getIdade()), contato.getEndereco()};
+        }
+        
+        int[] colWidths = {20, 15, 10, 30};
+
+        for (int i = 0; i < dados[0].length; i++) {
+            System.out.printf("%-" + colWidths[i] + "s", dados[0][i]);
+        }
+        System.out.println();
+
+        for (int i = 1; i < dados.length; i++) {
+            for (int j = 0; j < dados[i].length; j++) {
+                System.out.printf("%-" + colWidths[j] + "s", dados[i][j]);
+            }
+            System.out.println();
         }
     }
 
@@ -87,7 +103,7 @@ public class Contato {
         if(indiceContato != -1){
             Contato contato = agenda.get(indiceContato);
             System.out.print("O que você deseja alterar? Nome, telefone, idade ou endereço? ");
-            String alteracao = entrada.nextLine();
+            String alteracao = entrada.nextLine().trim();
             
             if(alteracao.equalsIgnoreCase("nome")){
                 System.out.print("Novo nome: ");
@@ -108,15 +124,16 @@ public class Contato {
 
                 contato.setContato(contato.getNome(), contato.getTelefone(), novaIdade, contato.getEndereco());
 
-            }else if(alteracao.equalsIgnoreCase("endereço")){
+            }else if(alteracao.equalsIgnoreCase("endereco")){
                 System.out.print("Novo endereço: ");
-                String novoEndereco = entrada.nextLine();
+                String novoEndereco = entrada.nextLine().trim();
                 contato.setContato(contato.getNome(), contato.getTelefone(), contato.getIdade(), novoEndereco);
 
             }else{
-                System.out.print("Opção inválida!");
+                System.out.print("Opção inválida!\n");
                 atualizouContato = false;
             }
+
         }else{
             System.out.print("Contato não encontrado na agenda!\n");
             atualizouContato = false;
@@ -125,6 +142,7 @@ public class Contato {
             System.out.print("Contato atualizado com sucesso!\n");
         }
     }
+
     public static void deletarContato(ArrayList<Contato>agenda, Scanner entrada){
         System.out.print("Digite o contato que deseja remover: ");
         String nome = entrada.nextLine();
@@ -138,9 +156,11 @@ public class Contato {
                 break;
             }
         }
+
         if (indiceRemover != -1){
             agenda.remove(indiceRemover);
             System.out.println("Contato excluído!");
+
         }else{
             System.out.println("Contato não encontrado na agenda! Tente novamente!");
         }

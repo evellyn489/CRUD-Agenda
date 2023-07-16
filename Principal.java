@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Principal {
     public static void main(String[] args) {
         ArrayList<Contato> agenda = new ArrayList<>();
-        Scanner entrada = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in, "UTF-8");
 
         while (true){
         System.out.println("Selecione uma opção para contato: ");
@@ -18,16 +18,20 @@ public class Principal {
                 System.out.println("Vamos criar um novo contato!\n");
                 Contato.criarContato(agenda, entrada);
                 break;
+
             case 2:
                 System.out.println("Esses são todos os seus contatos: \n");
                 Contato.lerContatos(agenda);
                 break;
+
             case 3:
                 Contato.atualizarContato(agenda, entrada);
                 break;
+
             case 4:
                 Contato.deletarContato(agenda, entrada);
                 break;
+
             case 5:
                 System.out.print("Saindo...");
                 entrada.close();
