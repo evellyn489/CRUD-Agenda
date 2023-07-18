@@ -38,7 +38,7 @@ public class Principal {
                 return; 
                 
             default:
-                System.out.print("Inválido! Tente novamente! Digite um número entre 1 e 5\n");
+                System.out.print("Inválido! Tente novamente! Digite um número entre 1 e 5!\n");
                 break;
             }
         }

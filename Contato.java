@@ -102,29 +102,29 @@ public class Contato {
 
         if(indiceContato != -1){
             Contato contato = agenda.get(indiceContato);
-            System.out.print("O que você deseja alterar? Nome, telefone, idade ou endereço? ");
+            System.out.print("O que você deseja alterar?\na- Nome\nb- telefone\nc- idade\nd- endereço? ");
             String alteracao = entrada.nextLine().trim();
             
-            if(alteracao.equalsIgnoreCase("nome")){
+            if(alteracao.equalsIgnoreCase("a")){
                 System.out.print("Novo nome: ");
                 String novoNome = entrada.nextLine();
                 contato.setContato(novoNome, contato.getTelefone(), contato.getIdade(), contato.getEndereco());
             
-            }else if(alteracao.equalsIgnoreCase("telefone")){
+            }else if(alteracao.equalsIgnoreCase("b")){
                 System.out.print("Novo telefone: ");
                 int novoTelefone = entrada.nextInt();
                 entrada.nextLine();
 
                 contato.setContato(contato.getNome(), novoTelefone, contato.getIdade(), contato.getEndereco());
 
-            }else if(alteracao.equalsIgnoreCase("idade")){
+            }else if(alteracao.equalsIgnoreCase("c")){
                 System.out.print("Nova idade: ");
                 int novaIdade = entrada.nextInt();
                 entrada.nextLine();
 
                 contato.setContato(contato.getNome(), contato.getTelefone(), novaIdade, contato.getEndereco());
 
-            }else if(alteracao.equalsIgnoreCase("endereco")){
+            }else if(alteracao.equalsIgnoreCase("d")){
                 System.out.print("Novo endereço: ");
                 String novoEndereco = entrada.nextLine().trim();
                 contato.setContato(contato.getNome(), contato.getTelefone(), contato.getIdade(), novoEndereco);
